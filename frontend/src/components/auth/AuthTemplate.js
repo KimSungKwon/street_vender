@@ -1,41 +1,51 @@
 import React from 'react';
 import styled from 'styled-components';
+import palette from '../../lib/styles/palette';
 import { Link } from 'react-router-dom';
-import bg_main from '../../images/bg_main.png';
 
-// 회원가입, 로그인 페이지의 레이아웃
+/*
+    회원가입, 로그인 페이지의 레이아웃을 담당.
+    children으로 받아 온 내용을 보여줌.
+*/
 
+/* 화면 전체를 채움 */
 const AuthTemplateBlock = styled.div`
     position: absolute;
     left: 0;
-    right: 0;
     top: 0;
     bottom: 0;
+    right: 0;
+    background: ${palette.gray[2]};
+    /* flex로 내부 내용 중앙 정렬 */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(${bg_main});
-
 `;
 
-const StyledLink = styled(Link)`
-    font-size: 60px;
-    font-weight: bold;
-    color: #7b7bbd;
-    margin-bottom: 9rem;
-    text-decoration: none;
-`;
-
+/* 흰색 박스 */
 const WhiteBox = styled.div`
+    .logo-area {
+        display: block;
+        padding-bottom: 2rem;
+        text-align: center;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
+    padding: 2rem;
     width: 360px;
+    background: white;
+    border-radius: 2px;
 `;
 
 const AuthTemplate = ({ children }) => {
     return (
         <AuthTemplateBlock>
-            <StyledLink to="/">TEMP NAME</StyledLink>
             <WhiteBox>
+                <div className="logo-area">
+                    <Link to="/">Street Vender</Link>
+                </div>
                 {children}
             </WhiteBox>
         </AuthTemplateBlock>

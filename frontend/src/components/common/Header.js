@@ -1,73 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
+import Responsive from './Responsive';
+import Button from './Button';
 import { Link } from 'react-router-dom';
-
-// 헤더 컴포넌트 (로고, 로그인, 회원가입)
 
 const HeaderBlock = styled.div`
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 50px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    z-index: 100;
-    transition: 0.3s;
+    background: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+`;
 
-    ${props =>
-        props.inverted && 
-        css`
-            background-color: #8080c0;
-            border: 0;
-        `}
-    
-    .header-menu {
-        float: right;
-        justify-content: space-between;
-        font-size: 15px;
-        text-decoration: none;
-        margin-top: 15px;
-        a {
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-        ${props =>
-            props.inverted &&
-            css`
-                color: black;
-            `}
+// Responsive 컴포넌트의 속성에 스타일을 추가하여 새로운 컴포넌트 생성
+const Wrapper = styled(Responsive)`
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 자식 엘리먼트 사이의 여백을 최대로 설정 */
+    .logo {
+        font-size: 1.125rem;
+        font-weight: 800;
+        letter-spacing: 1.75px;
+    }
+    .right {
+        display: flex;
+        align-items: center;
     }
 `;
 
-const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: white;
+// 헤더가 fixed로 되어 있기 떄문에 페이지의 콘텐츠가 4rem 아래에 나타나도록 해주는 컴포넌트
+const Spacer = styled.div`
+    height: 4rem;
 `;
 
-const Header = () => {
-    const [inverted, setInverted] = useState(false);
+const UserInfo = styled.div`
+    font-weight: 800;
+    margin-right: 1rem;
+`;
 
-    useEffect (() => {
-        const onScroll = () => {
-            let currentScroll = window.scrollY;
-            if (currentScroll !== 0)
-                setInverted(true);
-            else 
-                setInverted(false);
-        };
-
-        window.addEventListener("scroll", onScroll);
-        return () => window.removeEventListener("scroll", onScroll);
-    }, [inverted])
-    
-    return (    
-        <HeaderBlock inverted={inverted}>
-            <StyledLink to="/" style={{ marginLeft: 25 }}>MYBLOG</StyledLink>
-            <div className="header-menu">
-                <StyledLink to="/login">로그인</StyledLink>
-                <StyledLink to="/register">회원가입</StyledLink>
-            </div>
-        </HeaderBlock>
+const Header = ({ user, onLogout }) => {
+    return (
+        <>
+            <HeaderBlock>
+                <Wrapper>
+                    <Link to="/" className="logo">Street Vender</Link>
+                    {user ? (   // 로그인 되어있는가?
+                        <div className="right">
+                            <UserInfo>{user.username}</UserInfo>
+                            <Button onClick={onLogout}>로그아웃</Button>
+                        </div>
+                    ) : (
+                        <div className="right">
+                            <Button to="/login">로그인</Button>
+                        </div>
+                    )}
+                </Wrapper>
+            </HeaderBlock>
+            <Spacer />
+        </>
     );
 };
 
