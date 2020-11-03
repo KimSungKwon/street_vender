@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
+    "@react-google-maps/api": "^1.13.0",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -32,6 +33,7 @@
     "express": "^4.17.1",
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
+    "google-maps-react": "^2.0.6",
     "html-webpack-plugin": "4.0.0-beta.11",
     "identity-obj-proxy": "3.0.0",
     "immer": "^6.0.5",
