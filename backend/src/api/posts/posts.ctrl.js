@@ -66,6 +66,7 @@ POST /api/posts
     title: '제목',
     body: '내용',
     tags: ['태그1', '태그2']
+    marker: { name: 'name', position: { lat: lat, lng: lng }}
 }
 */
 export const write = async ctx => {
@@ -75,6 +76,7 @@ export const write = async ctx => {
         body: Joi.string().required(),
         tags: Joi.array().items(Joi.string())   // 문자열로 이루어진 배열
             .required(),
+        marker: { name: Joi.string().required(), position : { lat: Joi.number().required(), lng: Joi.number().required() }}
     });
     
     // 검증하고 나서 검증 실패인 경우 에러처리
@@ -85,11 +87,12 @@ export const write = async ctx => {
         return;
     }
     // 글 작성
-    const { title, body, tags } = ctx.request.body;
+    const { title, body, tags, marker } = ctx.request.body;
     const post = new Post({
         title,
         body: sanitizeHtml(body, sanitizeOption),
         tags,
+        marker,
         user: ctx.state.user,    // jwtMiddleware
     });
     try {
@@ -184,7 +187,8 @@ export const update = async ctx => {
     const schema = Joi.object().keys({
         title: Joi.string(),
         body: Joi.string(),
-        tags: Joi.array().items(Joi.string())
+        tags: Joi.array().items(Joi.string()),
+        marker: { name: Joi.string().required(), position : { lat: Joi.number().required(), lng: Joi.number().required() }},
     });
 
     const result = schema.validate(ctx.request.body);

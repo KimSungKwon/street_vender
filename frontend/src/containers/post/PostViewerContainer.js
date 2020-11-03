@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { readPost, unloadPost } from '../../modules/post';
 import PostViewer from '../../components/post/PostViewer';
 import PostActionButtons from '../../components/post/PostActionButtons';
+import GoogleMapRead from '../../components/post/GoogleMapRead';
 import { setOriginalPost } from '../../modules/write';
 import { removePost } from '../../lib/api/posts';
 
@@ -42,12 +43,14 @@ const PostViewerContainer = ({ match, history }) => {
     const ownPost = (user && user._id) === (post && post.user._id);
 
     return (
-        <PostViewer 
-            post={post} 
-            loading={loading} 
-            error={error} 
-            actionButtons={ownPost && <PostActionButtons onEdit={onEdit} onRemove={onRemove} />} 
-        />
+        <>
+            <PostViewer 
+                post={post} 
+                loading={loading} 
+                error={error} 
+                actionButtons={ownPost && <PostActionButtons onEdit={onEdit} onRemove={onRemove} />} 
+            />
+        </>
     );
 };
 
