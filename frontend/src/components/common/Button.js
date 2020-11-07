@@ -42,6 +42,12 @@ const buttonStyle = css`
             }
         `
     }
+    ${props =>
+        props.gray &&
+        css`
+            background: ${palette.gray[6]};
+        `
+    }
 `;
 
 const StyledButton = styled.button`
@@ -52,12 +58,9 @@ const StyledLink = styled(Link)`
     ${buttonStyle}
 `;
 
-const Button = props => {
-    return props.to ? ( // Button에 to 라는 props가 있는가?
-        <StyledLink {...props} cyan={props.cyan ? 1: 0} />
-    ) : (
-        <StyledButton {...props} />
-    );
+const Button = props => { // Button에 to 라는 props가 있는가? 
+    return props.to ? ( <StyledLink {...props} cyan={props.cyan ? 1 : 0} /> ) 
+    : (<StyledButton gray={props.gray ? 1 : 0} {...props} /> );
 };
 
 export default Button;
