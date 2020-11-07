@@ -8,7 +8,7 @@ const GoogleMapAPI = ({ onChangeMarkerOn, markerOn }) => {
 
     const mapStyles = {        
         height: "75vh",
-        width: "75%"
+        width: "50%"
     };
     const defaultCenter = {
         lat: 37.496281, lng: 126.957390

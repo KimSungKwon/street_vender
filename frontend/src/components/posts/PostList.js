@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 const PostListBlock = styled(Responsive)`
     margin-top: 3rem;
+    float: right;
 `;
 
 const WritePostButtonWrapper = styled.div`
