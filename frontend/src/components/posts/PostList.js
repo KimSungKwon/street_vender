@@ -43,7 +43,7 @@ const PostItemBlock = styled.div`
 `;
 
 const PostItem = ({ post }) => {
-    const { publishdDate, title, user, body, tags, _id } = post;
+    const { publishdDate, title, user, body, tags, _id, } = post;
     return (
         <PostItemBlock>
             <h2>
@@ -56,7 +56,7 @@ const PostItem = ({ post }) => {
     );
 };
 
-const PostList = ({ posts, loading, error, showWrittenButton }) => {
+const PostList = ({ posts, loading, error, markerOn, showWrittenButton }) => {
     if (error ) {
         return <PostListBlock>에러 발생</PostListBlock>;
     }
@@ -64,11 +64,11 @@ const PostList = ({ posts, loading, error, showWrittenButton }) => {
     return (
         <PostListBlock>
             <WritePostButtonWrapper>
-                {showWrittenButton && (
+                {(showWrittenButton && markerOn) ? (
                     <Button cyan to="/write">
                         새 리뷰 작성하기
                     </Button>
-                )}
+                ) : (<Button gray>마커를 선택하세요</Button>)}
             </WritePostButtonWrapper>
             {/* 로딩중 아니고, 포스트배열이 존재할 때 */}
             {!loading && posts && (
