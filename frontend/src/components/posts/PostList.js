@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 const PostListBlock = styled(Responsive)`
     margin-top: 3rem;
+    float: right;
 `;
 
 const WritePostButtonWrapper = styled.div`
@@ -41,9 +42,22 @@ const PostItemBlock = styled.div`
         margin-top: 2rem;
     }
 `;
+const ListOfLikeButtons =styled.div`
+    display: flex;  
+    height: 90px;
+    Button{
+        background-color:white;
+    }
 
+    Button p{
+        color:black;
+        margin :0;
+        text-align:center;
+        font-size : 10px;
+    }
+`;
 const PostItem = ({ post }) => {
-    const { publishdDate, title, user, body, tags, _id } = post;
+    const { publishdDate, title, user, body, tags, _id, } = post;
     return (
         <PostItemBlock>
             <h2>
@@ -52,11 +66,25 @@ const PostItem = ({ post }) => {
             <SubInfo username={user.username} publishdDate={new Date(publishdDate)} /> 
             <Tags tags={tags} />
             <p>{body}</p>
+            <ListOfLikeButtons>
+                <Button>
+                    <img src={require("../../images/like.png")}></img>
+                    <p>좋아요 수1</p>
+                </Button>
+                <Button>
+                    <img src={require("../../images/soso.png")}></img>
+                    <p>평범해요 수</p>
+                </Button>
+                <Button>
+                    <img src={require("../../images/dislike.png")}></img>
+                    <p>별로에요 수</p>
+                </Button>
+            </ListOfLikeButtons>
         </PostItemBlock>
     );
 };
 
-const PostList = ({ posts, loading, error, showWrittenButton }) => {
+const PostList = ({ posts, loading, error, markerOn, showWrittenButton }) => {
     if (error ) {
         return <PostListBlock>에러 발생</PostListBlock>;
     }
@@ -64,11 +92,11 @@ const PostList = ({ posts, loading, error, showWrittenButton }) => {
     return (
         <PostListBlock>
             <WritePostButtonWrapper>
-                {showWrittenButton && (
+                {(showWrittenButton && markerOn) ? (
                     <Button cyan to="/write">
                         새 리뷰 작성하기
                     </Button>
-                )}
+                ) : (<Button gray>마커를 선택하세요</Button>)}
             </WritePostButtonWrapper>
             {/* 로딩중 아니고, 포스트배열이 존재할 때 */}
             {!loading && posts && (

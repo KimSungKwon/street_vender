@@ -1,12 +1,14 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { useEffect } from 'react';
 
-const GoogleMapAPI = () => {
+const GoogleMapAPI = ({ onChangeMarkerOn, markerOn }) => {
     const [markers, setMarkers] = useState([]);
+    const [markerClicked, setMarkerClicked] = useState(false);
 
     const mapStyles = {        
-        height: "100vh",
-        width: "100%"
+        height: "75vh",
+        width: "50%"
     };
     const defaultCenter = {
         lat: 37.496281, lng: 126.957390
@@ -14,7 +16,7 @@ const GoogleMapAPI = () => {
 
     const addMarker = (e) => {
         const marker = {
-            name: `www`,
+            name: e.latLng.lat(),
             position: {
                 lat: e.latLng.lat(),
                 lng: e.latLng.lng()
@@ -23,6 +25,17 @@ const GoogleMapAPI = () => {
         const nextMarkers = [...markers, marker];
         setMarkers(nextMarkers);
     }
+
+    const onClick = useCallback(e => {
+        setMarkerClicked(true);
+        onChangeMarkerOn(true);
+        },
+        [markerClicked, onChangeMarkerOn],
+    );
+
+    useEffect(() => {
+        setMarkerClicked(markerOn);
+    }, [markerClicked]);
 
     return (
         <LoadScript
@@ -36,7 +49,11 @@ const GoogleMapAPI = () => {
             {
                 markers.map(item => {
                     return (
-                        <Marker key={item.name} position={item.position} />
+                        <Marker 
+                            key={item.name} 
+                            position={item.position} 
+                            onClick={onClick}
+                        />
                     )
                 })
             }

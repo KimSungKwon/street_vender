@@ -7,9 +7,10 @@ import qs from 'qs';
 
 const PostListContainer = ({ match, location }) => {
     const dispatch = useDispatch();
-    const { posts, error, loading, user } = useSelector(({ posts, user, loading }) => ({
+    const { posts, error, loading, user, markerOn } = useSelector(({ posts, user, loading }) => ({
         posts: posts.posts,
         error: posts.error,
+        markerOn: posts.markerOn,
         user: user.user,
         loading: loading['posts/LIST_POSTS'],
     }));
@@ -24,7 +25,7 @@ const PostListContainer = ({ match, location }) => {
     }, [dispatch, location.search]);
 
     return (
-        <PostList loading={loading} posts={posts} error={error} showWrittenButton={user} />
+        <PostList loading={loading} posts={posts} error={error} markerOn={markerOn} showWrittenButton={user} />
     );
 };
 
