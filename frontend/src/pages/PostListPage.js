@@ -8,9 +8,11 @@ const PostListPage = () => {
     return (
         <>
             <HeaderContainer />
-            <PostListContainer />
             <GoogleMapAPIContainer />
-            <PaginationContainer />          
+            <PostListContainer />
+           
+            
+                      
         </>
     )
 };
