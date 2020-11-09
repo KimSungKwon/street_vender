@@ -7,9 +7,14 @@ const GoogleMapAPI = ({ onChangeMarkerOn, markerOn }) => {
     const [markerClicked, setMarkerClicked] = useState(false);
 
     const mapStyles = {        
-        height: "75vh",
-        width: "50%"
-    };
+        height: "100vh",
+        width: "50%",
+        float: "left",
+        
+       //display: "flex"
+        
+       
+     };
     const defaultCenter = {
         lat: 37.496281, lng: 126.957390
     };

@@ -6,10 +6,16 @@ import Responsive from '../common/Responsive';
 import SubInfo from '../common/SubInfo';
 import Tags from '../common/Tags';
 import { Link } from 'react-router-dom';
-import ListOfLikeButtons from './LikeButtons';
+import LikeButtons from './LikeButtons';
+import SearchBar from './SearchBar';
+import Pagination from './Pagination';
 const PostListBlock = styled(Responsive)`
-    margin-top: 3rem;
-    float: right;
+    margin-top: 1rem;
+    float:right;
+   
+    
+    
+    width: 50%;
 `;
 
 const WritePostButtonWrapper = styled.div`
@@ -53,8 +59,9 @@ const PostItem = ({ post }) => {
             <SubInfo username={user.username} publishdDate={new Date(publishdDate)} /> 
             <Tags tags={tags} />
             <p>{body}</p>
-            <ListOfLikeButtons></ListOfLikeButtons>
+            <LikeButtons></LikeButtons>
         </PostItemBlock>
+        
     );
 };
 
@@ -72,6 +79,8 @@ const PostList = ({ posts, loading, error, markerOn, showWrittenButton }) => {
                     </Button>
                 ) : (<Button gray>마커를 선택하세요</Button>)}
             </WritePostButtonWrapper>
+            <SearchBar></SearchBar>
+            <Pagination></Pagination>
             {/* 로딩중 아니고, 포스트배열이 존재할 때 */}
             {!loading && posts && (
                 <div>

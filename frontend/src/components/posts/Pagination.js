@@ -7,7 +7,6 @@ const PaginationBlock = styled.div`
     width: 320px;
     margin: 0 auto;
     display: flex;
-    float: right;
     justify-content: space-between;
     margin-bottom: 3rem;
 `;
