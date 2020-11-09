@@ -6,7 +6,7 @@ import Responsive from '../common/Responsive';
 import SubInfo from '../common/SubInfo';
 import Tags from '../common/Tags';
 import { Link } from 'react-router-dom';
-
+import ListOfLikeButtons from './ListOfLikeButtons';
 const PostListBlock = styled(Responsive)`
     margin-top: 3rem;
     float: right;
