@@ -7,10 +7,10 @@ import GoogleMapAPIContainer from '../containers/posts/GoogleMapAPIContainer';
 const PostListPage = () => {
     return (
         <>
-            <HeaderContainer />
+            
             <GoogleMapAPIContainer />
             <PostListContainer />
-           
+            <HeaderContainer />
             
                       
         </>
