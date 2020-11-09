@@ -6,6 +6,7 @@ import Responsive from '../common/Responsive';
 import SubInfo from '../common/SubInfo';
 import Tags from '../common/Tags';
 import { Link } from 'react-router-dom';
+import LikeButtons from './LikeButtons';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 const PostListBlock = styled(Responsive)`
@@ -47,20 +48,7 @@ const PostItemBlock = styled.div`
         margin-top: 2rem;
     }
 `;
-const ListOfLikeButtons =styled.div`
-    display: flex;  
-    height: 90px;
-    Button{
-        background-color:white;
-    }
 
-    Button p{
-        color:black;
-        margin :0;
-        text-align:center;
-        font-size : 10px;
-    }
-`;
 const PostItem = ({ post }) => {
     const { publishdDate, title, user, body, tags, _id, } = post;
     return (
@@ -71,21 +59,7 @@ const PostItem = ({ post }) => {
             <SubInfo username={user.username} publishdDate={new Date(publishdDate)} /> 
             <Tags tags={tags} />
             <p>{body}</p>
-            <ListOfLikeButtons>
-                <Button>
-                    <img src={require("../../images/like.png")}></img>
-                    <p>좋아요 수1</p>
-                </Button>
-                <Button>
-                    <img src={require("../../images/soso.png")}></img>
-                    <p>평범해요 수</p>
-                </Button>
-                <Button>
-                    <img src={require("../../images/dislike.png")}></img>
-                    <p>별로에요 수</p>
-                </Button>
-            </ListOfLikeButtons>
-            
+            <LikeButtons></LikeButtons>
         </PostItemBlock>
         
     );
