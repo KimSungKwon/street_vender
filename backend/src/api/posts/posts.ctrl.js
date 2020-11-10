@@ -76,7 +76,8 @@ export const write = async ctx => {
         body: Joi.string().required(),
         tags: Joi.array().items(Joi.string())   // 문자열로 이루어진 배열
             .required(),
-        marker: { name: Joi.string().required(), position : { lat: Joi.number().required(), lng: Joi.number().required() }}
+        marker: { name: Joi.string().required(), position : { lat: Joi.number().required(), lng: Joi.number().required() }},
+        likeButtons:{like:Joi.number().required(),soso:Joi.number().required(),dislike:Joi.number().required()}
     });
     
     // 검증하고 나서 검증 실패인 경우 에러처리
