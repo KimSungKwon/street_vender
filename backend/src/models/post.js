@@ -16,6 +16,7 @@ const PostSchema = new Schema({
         _id: mongoose.Types.ObjectId,
         username: String
     },
+    LikeOrDislike:{like:Number,soso:Number,dislike:Number}
 });
 
 const Post = mongoose.model('Post', PostSchema);
