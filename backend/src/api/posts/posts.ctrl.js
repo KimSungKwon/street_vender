@@ -94,6 +94,7 @@ export const write = async ctx => {
         tags,
         marker,
         user: ctx.state.user,    // jwtMiddleware
+        likeButtons:{like:0,soso:0,dislike:0}
     });
     try {
         await post.save();

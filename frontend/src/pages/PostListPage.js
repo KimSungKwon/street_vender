@@ -8,11 +8,12 @@ const PostListPage = () => {
     return (
         <>
             
+            <HeaderContainer />
             <GoogleMapAPIContainer />
             <PostListContainer />
-            <HeaderContainer />
-            
-                      
+
+
+
         </>
     )
 };
