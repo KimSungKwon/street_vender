@@ -10,11 +10,12 @@ export const writePost = ({ title, body, tags, marker }) =>
 export const readPost = id => client.get(`/api/posts/${id}`);
 
 // 포스트 리스트
-export const listPosts = ({ page, username, tag }) => {
+export const listPosts = ({ page, username, tag, _id }) => {
     const queryString = qs.stringify({
         page,
         username,
         tag,
+        _id,
     });
     return client.get(`/api/posts?${queryString}`)  // /api/posts?username=&tag=&page=
 };
