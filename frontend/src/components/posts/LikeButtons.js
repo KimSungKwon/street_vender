@@ -15,20 +15,20 @@ const ListOfLikeButtons =styled.div`
         font-size : 10px;
     }
 `;
-const LikeButtons = (like) => {
+const LikeButtons = ({likeNum}) => {
     return (
         <ListOfLikeButtons>
             <Button>
                 <img src={require("../../images/like.png")}></img>
-                <p>좋아요 수{like.like}</p>
+                <p>좋아요{likeNum.like}</p>
             </Button>
             <Button>
                 <img src={require("../../images/soso.png")}></img>
-                <p>평범해요 수{like.soso}</p>
+                <p>평범해요{likeNum.soso}</p>
             </Button>
             <Button>
                 <img src={require("../../images/dislike.png")}></img>
-                <p>별로에요 수{like.dislike}</p>
+                <p>별로에요{likeNum.dislike}</p>
             </Button>
         </ListOfLikeButtons>
     );
