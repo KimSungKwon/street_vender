@@ -8,12 +8,10 @@ import Tags from '../common/Tags';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
+
 const PostListBlock = styled(Responsive)`
     margin-top: 1rem;
     float:right;
-   
-    
-    
     width: 50%;
 `;
 
@@ -21,6 +19,12 @@ const WritePostButtonWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
     margin-bottom: 3rem;
+`;
+
+const PostItemBlocksWrapper =styled.div`
+    height : window.outerHeight;
+    float: left;
+    
 `;
 
 const PostItemBlock = styled.div`
@@ -44,7 +48,7 @@ const PostItemBlock = styled.div`
         }
     }
     p {
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 `;
 const ListOfLikeButtons =styled.div`
@@ -64,6 +68,7 @@ const ListOfLikeButtons =styled.div`
 const PostItem = ({ post }) => {
     const { publishdDate, title, user, body, tags, _id, } = post;
     return (
+    <PostItemBlocksWrapper>
         <PostItemBlock>
             <h2>
                 <Link to={`/@${user.username}/${_id}`}>{title}</Link>
@@ -87,7 +92,7 @@ const PostItem = ({ post }) => {
             </ListOfLikeButtons>
             
         </PostItemBlock>
-        
+    </PostItemBlocksWrapper>    
     );
 };
 
