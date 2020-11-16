@@ -1,48 +1,77 @@
 import React from 'react';
-import styled from 'styled-components';
+import Toolbar from '@material-ui/core/Toolbar';
+import InputBase from '@material-ui/core/InputBase';
+import { fade, makeStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
 
-const SearchBarBlock = styled.div``;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: '#EEEEEE',
+    },
+    marginLeft: 0,
+    width: '1rem',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: 'auto',
+    },
+    border: '2px solid #AACCFF',
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#99BBFF',
+  },
+  inputRoot: {
+    color: 'inherit',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '1rem',
+    [theme.breakpoints.up('sm')]: {
+      width: '10rem',
+      '&:focus': {
+        width: '15rem',
+      },
+    },
+  },
+}));
 
-const SearchInput = styled.input`
-    padding: 10px;
-    margin-bottom: 2rem;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border: 2px solid #BBDDFF;
-    outline: none;
-    background-color: #EEEEEE;
-    width: 15rem;
-    min-height: 2rem;
-    max-height: 2rem;
-`;
-
-const SearchButton = styled.button`
-    padding: 10px;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border: none;
-    color: gray;
-    background: url("images/search.png") no-repeat center;
-    background-size: 1rem;
-    background-color: #BBDDFF;
-    width: 2rem;
-    min-height: 2rem;
-    max-height: 2rem;
-    cursor: pointer;
-
-    position: relative;
-    left: 5px;
-  `;
 
 const SearchBar = ({ tags }) => {
-    return (
-        <SearchBarBlock class="relative">
-            <SearchInput placeholder="Search Tag"/>
-            <SearchButton class="relative"/>    
-        </SearchBarBlock>
-    );
+  const classes = useStyles();
+  return (
+    <Toolbar>
+        <div className={classes.search}>
+            <div className={classes.searchIcon}>
+                <SearchIcon />
+            </div>
+            <InputBase
+                placeholder="Search Tag…"
+                classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+            />
+        </div>
+    </Toolbar>
+  );
 };
 
 export default SearchBar;
