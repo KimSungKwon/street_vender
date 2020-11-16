@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-const GoogleMapWrite = ({ onChangeField, marker, title }) => {
+const GoogleMapWrite = ({ onChangeField, marker, title, user, markerOn }) => {
     const [markers, setMarkers] = useState([]);
 
     const mapStyles = {        
@@ -12,16 +12,11 @@ const GoogleMapWrite = ({ onChangeField, marker, title }) => {
         lat: 37.496281, lng: 126.957390
     };
 
-    const addMarker = (e) => {
+    const onLoad = () => {
         const marker = {
             name: title,
-            position: {
-                lat: e.latLng.lat(),
-                lng: e.latLng.lng()
-            }
+            position: markerOn.position,
         }
-        const nextMarkers = [marker];
-        setMarkers(nextMarkers);
         onChangeField({ key: 'marker', value: marker });
     }
 
@@ -32,15 +27,15 @@ const GoogleMapWrite = ({ onChangeField, marker, title }) => {
             <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={17}
-                center={defaultCenter}
-                onClick={addMarker}             
+                center={defaultCenter}             
             >
-            {
-                markers.map(item => {
-                    return (
-                        <Marker key={item.name} position={item.position} />
-                    )
-                })
+
+            {markerOn && 
+                <Marker 
+                    key={title} 
+                    position={markerOn.position}
+                    onLoad={onLoad}  
+                />
             }
             </GoogleMap>
         </LoadScript>

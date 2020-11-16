@@ -17,15 +17,15 @@ const PostListContainer = ({ match, location }) => {
 
     // URL 에서 쿼리, 파라미터 값 가져와서 api 로
     useEffect(() => {
-        const { username } = match.params;
+        const { username, _id } = match.params;
         const { tag, page } = qs.parse(location.search, {
             ignoreQueryPrefix: true,
         });
-        dispatch(listPosts({ tag, username, page }));
+        dispatch(listPosts({ tag, username, page, _id }));
     }, [dispatch, location.search]);
 
     return (
-        <PostList loading={loading} posts={posts} error={error} markerOn={markerOn} showWrittenButton={user} />
+        <PostList loading={loading} posts={posts} error={error} markerOn={markerOn} showWrittenButton={user} user={user} />
     );
 };
 

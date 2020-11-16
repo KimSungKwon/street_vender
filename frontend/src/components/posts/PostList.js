@@ -70,19 +70,20 @@ const PostItem = ({ post }) => {
     );
 };
 
-const PostList = ({ posts, loading, error, markerOn, showWrittenButton }) => {
-    if (error ) {
+const PostList = ({ posts, loading, error, markerOn, showWrittenButton, user }) => {
+    if (error) {
         return <PostListBlock>에러 발생</PostListBlock>;
     }
 
     return (
         <PostListBlock>
             <WritePostButtonWrapper>
-                {(showWrittenButton && markerOn) ? (
+                {user && user.username == 'admin' ? ((showWrittenButton && markerOn) ? (
                     <Button cyan to="/write">
                         새 리뷰 작성하기
                     </Button>
-                ) : (<Button gray>마커를 선택하세요</Button>)}
+                ) : (<Button gray>마커를 선택하세요</Button>)) : null
+                }
             </WritePostButtonWrapper>
             <SearchBar></SearchBar>
             <Pagination></Pagination>
