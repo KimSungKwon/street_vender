@@ -21,7 +21,6 @@ const GoogleMapRead = ({ post }) => {
                 zoom={17}
                 center={defaultCenter}            
             >
-
             </GoogleMap>
         </LoadScript>
     )

@@ -5,8 +5,14 @@ import { changeField } from '../../modules/posts';
 
 const GoogleMapAPIContainer = () => {
     const dispatch = useDispatch();
-    const markerOn = useSelector(state => state.posts.markerOn);
-    
+    // const markerOn = useSelector(state => state.posts.markerOn);
+    const { posts, loading, markerOn, user } = useSelector(({ posts, loading, user }) => ({
+        posts: posts.posts,
+        markerOn: posts.markerOn,
+        user: user.user,
+        loading: loading['posts/LIST_POSTS'],
+    }));
+
     const onChangeMarkerOn = value => {
         dispatch(
             changeField({
@@ -16,7 +22,7 @@ const GoogleMapAPIContainer = () => {
         )
     }
 
-    return <GoogleMapAPI onChangeMarkerOn={onChangeMarkerOn} markerOn={markerOn} />;
+    return <GoogleMapAPI onChangeMarkerOn={onChangeMarkerOn} posts={posts} loading={loading} user={user} markerOn={markerOn} />;
 };
 
 export default GoogleMapAPIContainer;

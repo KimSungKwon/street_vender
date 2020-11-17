@@ -9,12 +9,10 @@ import { Link } from 'react-router-dom';
 import LikeButtons from './LikeButtons';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
+
 const PostListBlock = styled(Responsive)`
     margin-top: 1rem;
     float:right;
-   
-    
-    
     width: 50%;
 `;
 
@@ -22,6 +20,12 @@ const WritePostButtonWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
     margin-bottom: 3rem;
+`;
+
+const PostItemBlocksWrapper =styled.div`
+    height : window.outerHeight;
+    float: left;
+    
 `;
 
 const PostItemBlock = styled.div`
@@ -45,7 +49,7 @@ const PostItemBlock = styled.div`
         }
     }
     p {
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 `;
 
@@ -53,6 +57,7 @@ const PostItem = ({ post }) => {
     const { publishdDate, title, user, body, tags, _id, likeButton} = post;
     console.log(post);
     return (
+    <PostItemBlocksWrapper>
         <PostItemBlock>
             <h2>
                 <Link to={`/@${user.username}/${_id}`}>{title}</Link>
@@ -62,23 +67,24 @@ const PostItem = ({ post }) => {
             <p>{body}</p>
             <LikeButtons likeNum={likeButton}/>
         </PostItemBlock>
-        
+    </PostItemBlocksWrapper>    
     );
 };
 
-const PostList = ({ posts, loading, error, markerOn, showWrittenButton }) => {
-    if (error ) {
+const PostList = ({ posts, loading, error, markerOn, showWrittenButton, user }) => {
+    if (error) {
         return <PostListBlock>에러 발생</PostListBlock>;
     }
 
     return (
         <PostListBlock>
             <WritePostButtonWrapper>
-                {(showWrittenButton && markerOn) ? (
+                {user && user.username == 'admin' ? ((showWrittenButton && markerOn) ? (
                     <Button cyan to="/write">
                         새 리뷰 작성하기
                     </Button>
-                ) : (<Button gray>마커를 선택하세요</Button>)}
+                ) : (<Button gray>마커를 선택하세요</Button>)) : null
+                }
             </WritePostButtonWrapper>
             <SearchBar></SearchBar>
             <Pagination></Pagination>

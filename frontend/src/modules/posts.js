@@ -10,7 +10,7 @@ const LIST_POSTS_SUCCESS = 'posts/LIST_POSTS_SUCCESS';
 const LIST_POSTS_FAILURE = 'posts/LIST_POSTS_FAILURE';
 
 export const changeField = createAction(CHANGE_FIELD, ({ key, value }) => ({ key, value }));
-export const listPosts = createAction(LIST_POSTS, ({ tag, username, page }) => ({ tag, username, page }));
+export const listPosts = createAction(LIST_POSTS, ({ tag, username, page, _id }) => ({ tag, username, page, _id }));
 
 const listPostsSaga = createRequestSaga(LIST_POSTS, postsAPI.listPosts);
 
@@ -22,7 +22,7 @@ const initialState = {
     posts: null,
     error: null,
     lastPage: 1,
-    markerOn: false,
+    markerOn: null,
 };
 
 const posts = handleActions(

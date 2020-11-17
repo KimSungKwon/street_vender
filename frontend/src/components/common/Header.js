@@ -5,7 +5,7 @@ import Button from './Button';
 import { Link } from 'react-router-dom';
 
 const HeaderBlock = styled.div`
-    position: fixed;
+    position: sticky;
     width: 100%;
     background: white;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
@@ -29,9 +29,9 @@ const Wrapper = styled(Responsive)`
 `;
 
 // 헤더가 fixed로 되어 있기 떄문에 페이지의 콘텐츠가 4rem 아래에 나타나도록 해주는 컴포넌트
-const Spacer = styled.div`
-    height: 4rem;
-`;
+// const Spacer = styled.div`
+//     height: 4rem;
+// `;
 
 const UserInfo = styled.div`
     font-weight: 800;
@@ -56,7 +56,7 @@ const Header = ({ user, onLogout }) => {
                     )}
                 </Wrapper>
             </HeaderBlock>
-            <Spacer />
+            {/* <Spacer /> */}
         </>
     );
 };
