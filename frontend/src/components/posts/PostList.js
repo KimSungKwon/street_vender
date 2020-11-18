@@ -54,7 +54,8 @@ const PostItemBlock = styled.div`
 `;
 
 const PostItem = ({ post }) => {
-    const { publishdDate, title, user, body, tags, _id, } = post;
+    const { publishdDate, title, user, body, tags, _id, likeButton} = post;
+    console.log(post);
     return (
     <PostItemBlocksWrapper>
         <PostItemBlock>
@@ -64,7 +65,7 @@ const PostItem = ({ post }) => {
             <SubInfo username={user.username} publishdDate={new Date(publishdDate)} /> 
             <Tags tags={tags} />
             <p>{body}</p>
-            <LikeButtons></LikeButtons>
+            <LikeButtons likeNum={likeButton}/>
         </PostItemBlock>
     </PostItemBlocksWrapper>    
     );
