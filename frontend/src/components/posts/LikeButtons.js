@@ -20,15 +20,15 @@ const LikeButtons = ({likeNum}) => {
         <ListOfLikeButtons>
             <Button>
                 <img src={require("../../images/like.png")}></img>
-                <p>좋아요{likeNum.like}</p>
+                <p>좋아요</p>
             </Button>
             <Button>
                 <img src={require("../../images/soso.png")}></img>
-                <p>평범해요{likeNum.soso}</p>
+                <p>평범해요</p>
             </Button>
             <Button>
                 <img src={require("../../images/dislike.png")}></img>
-                <p>별로에요{likeNum.dislike}</p>
+                <p>별로에요</p>
             </Button>
         </ListOfLikeButtons>
     );
