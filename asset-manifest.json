@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/street_vender/static/css/main.5107d2d7.chunk.css",
-    "main.js": "/street_vender/static/js/main.4d6e6d8e.chunk.js",
-    "main.js.map": "/street_vender/static/js/main.4d6e6d8e.chunk.js.map",
+    "main.js": "/street_vender/static/js/main.1da3978b.chunk.js",
+    "main.js.map": "/street_vender/static/js/main.1da3978b.chunk.js.map",
     "runtime-main.js": "/street_vender/static/js/runtime-main.0fd09a0b.js",
     "runtime-main.js.map": "/street_vender/static/js/runtime-main.0fd09a0b.js.map",
     "static/css/2.2846713d.chunk.css": "/street_vender/static/css/2.2846713d.chunk.css",
     "static/js/2.d0bb77a2.chunk.js": "/street_vender/static/js/2.d0bb77a2.chunk.js",
     "static/js/2.d0bb77a2.chunk.js.map": "/street_vender/static/js/2.d0bb77a2.chunk.js.map",
     "index.html": "/street_vender/index.html",
-    "precache-manifest.81a73ffb064068e0b0e44829768f23ab.js": "/street_vender/precache-manifest.81a73ffb064068e0b0e44829768f23ab.js",
+    "precache-manifest.2856a954c1540cf636411b1f0f258baa.js": "/street_vender/precache-manifest.2856a954c1540cf636411b1f0f258baa.js",
     "service-worker.js": "/street_vender/service-worker.js",
     "static/css/2.2846713d.chunk.css.map": "/street_vender/static/css/2.2846713d.chunk.css.map",
     "static/css/main.5107d2d7.chunk.css.map": "/street_vender/static/css/main.5107d2d7.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.2846713d.chunk.css",
     "static/js/2.d0bb77a2.chunk.js",
     "static/css/main.5107d2d7.chunk.css",
-    "static/js/main.4d6e6d8e.chunk.js"
+    "static/js/main.1da3978b.chunk.js"
   ]
 }
