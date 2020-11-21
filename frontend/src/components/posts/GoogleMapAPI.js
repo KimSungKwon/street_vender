@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const GoogleMapAPI = ({ onChangeMarkerOn, posts, loading, user, markerOn }) => {
-    const [markers, setMarkers] = useState([]);
+    const [markers, setMarkers] = useState();
     const [selected, setSelected] = useState(null);
 
     const mapStyles = {        
@@ -23,11 +23,10 @@ const GoogleMapAPI = ({ onChangeMarkerOn, posts, loading, user, markerOn }) => {
             name: e.latLng.lat(),
             position: {
                 lat: e.latLng.lat(),
-                lng: e.latLng.lng()
+                lng: e.latLng.lng(),
             }
         }
-        const nextMarkers = [...markers, marker];
-        setMarkers(nextMarkers);
+        setMarkers(marker);
     }
     // 마커 : 마우스 우클릭 이벤트. 미완성
     const removeMarker = (e) => {
@@ -42,6 +41,20 @@ const GoogleMapAPI = ({ onChangeMarkerOn, posts, loading, user, markerOn }) => {
         setMarkers(nextMarkers);
     }
 
+    const dragMarker = (e) => {
+        console.log(e);
+        const newMarker = {
+            name: e.latLng.lat(),
+            position: {
+                lat: e.latLng.lat(),
+                lng: e.latLng.lng(),
+            }
+        }
+        setMarkers(newMarker);
+        setSelected(newMarker);
+        onChangeMarkerOn(newMarker);
+    }
+
     return (
         <LoadScript
             googleMapsApiKey='AIzaSyCh2Dfsi0RTtFrKPTdMgTLWKgkT-MRRexg'>
@@ -52,20 +65,18 @@ const GoogleMapAPI = ({ onChangeMarkerOn, posts, loading, user, markerOn }) => {
                 onClick={addMarker}             
             >
             {/* 어드민 로그인하면 지도에 클릭으로 마커 생성 가능 */}
-            {user && user.username == 'admin' &&
-                markers.map(item => {
-                    return (
-                        <Marker 
-                            key={item.name} 
-                            position={item.position} 
-                            onClick={() => {
-                                onChangeMarkerOn(item);
-                                setSelected(item);
-                            }}
-                            onRightClick={removeMarker}
-                        />
-                    )
-                })
+            {user && user.username == 'admin' && markers &&
+                <Marker 
+                    key={markers.name} 
+                    position={markers.position} 
+                    draggable={true}
+                    onClick={() => {
+                        onChangeMarkerOn(markers);
+                        setSelected(markers);
+                    }}
+                    onRightClick={removeMarker}
+                    onDragEnd={dragMarker}
+                />
             }
             {/* 글목록에서 마커들을 불러와 구글맵에 마커 생성 */}
             {!loading && posts && (
