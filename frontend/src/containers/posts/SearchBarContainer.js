@@ -1,7 +1,7 @@
 // container > posts > SearchBarContainer
 
 import React from 'react';
-import SearchBar from '../../components/posts/SearchBar copy';
+import SearchBar from '../../components/posts/SearchBar';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeField } from '../../modules/posts';      // 리덕스 스토어의 search 스테이트를 변경하기 위한 함수
 

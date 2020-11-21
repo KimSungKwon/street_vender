@@ -52,7 +52,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBar = ({ tags }) => {
+const SearchBar = ({ onChangeSearch, posts }) => {    // module의 onChangeField 액션함수, posts 스테이트를 Container 에서 받아옴  
+  const onChange = (e) => {   // onChange 이벤트 핸들러  함수 
+      onChangeSearch(e.target.value) // search의 값을 e.target.value로 (검색창에 써진대로)
+  }
   const classes = useStyles();
   return (
     <Toolbar>
@@ -67,6 +70,7 @@ const SearchBar = ({ tags }) => {
                 input: classes.inputInput,
                 }}
                 inputProps={{ 'aria-label': 'search' }}
+                onChange={onChange}     // 검색창에 작성을 하면 onChange 실행
             />
         </div>
     </Toolbar>
