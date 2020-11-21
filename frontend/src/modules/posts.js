@@ -18,7 +18,7 @@ export function* postsSaga() {
     yield takeLatest(LIST_POSTS, listPostsSaga);
 }
 
-const initialState = {
+export const initialState = {
     posts: null,
     error: null,
     lastPage: 1,

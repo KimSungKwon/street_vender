@@ -10,6 +10,8 @@ import LikeButtons from './LikeButtons';
 import SearchBarContainer from '../../containers/posts/SearchBarContainer';
 import Pagination from './Pagination';
 
+import {initialState} from '../../modules/posts';
+
 const PostListBlock = styled(Responsive)`
     margin-top: 1rem;
     float:right;
@@ -55,19 +57,23 @@ const PostItemBlock = styled.div`
 
 const PostItem = ({ post }) => {
     const { publishdDate, title, user, body, tags, _id, } = post;
-    return (
-    <PostItemBlocksWrapper>
-        <PostItemBlock>
-            <h2>
-                <Link to={`/@${user.username}/${_id}`}>{title}</Link>
-            </h2>
-            <SubInfo username={user.username} publishdDate={new Date(publishdDate)} /> 
-            <Tags tags={tags} />
-            <p>{body}</p>
-            <LikeButtons></LikeButtons>
-        </PostItemBlock>
-    </PostItemBlocksWrapper>    
-    );
+    const test = (element) => element == initialState.search;
+    if(tags.some(test) || initialState.search == null){
+        return (
+        <PostItemBlocksWrapper>
+            <PostItemBlock>
+                <h2>
+                    <Link to={`/@${user.username}/${_id}`}>{title}</Link>
+                </h2>
+                <SubInfo username={user.username} publishdDate={new Date(publishdDate)} /> 
+                <Tags tags={tags} />
+                <p>{body}</p>
+                <LikeButtons></LikeButtons>
+            </PostItemBlock>
+        </PostItemBlocksWrapper>    
+        );
+    }
+    else return null;
 };
 
 const PostList = ({ posts, loading, error, markerOn, showWrittenButton, user }) => {
