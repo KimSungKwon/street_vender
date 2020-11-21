@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9ec5e85d5f140473f70f674b168a696d",
+    "revision": "6dd4c003b6c300100b5f0f1022593686",
     "url": "/street_vender/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/street_vender/static/css/2.2846713d.chunk.css"
   },
   {
-    "revision": "2fbcbbe4d08d9f2580a3",
+    "revision": "1fd847e0abeb8a23f3ed",
     "url": "/street_vender/static/css/main.5107d2d7.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/street_vender/static/js/2.d0bb77a2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2fbcbbe4d08d9f2580a3",
-    "url": "/street_vender/static/js/main.1da3978b.chunk.js"
+    "revision": "1fd847e0abeb8a23f3ed",
+    "url": "/street_vender/static/js/main.741bd64f.chunk.js"
   },
   {
     "revision": "2831dbc2006916eb8f3a",
