@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 import PostListPage from './pages/PostListPage';
@@ -14,11 +14,11 @@ const  App = () => {
       <Helmet>
         <title>Street Vender</title>
       </Helmet>
-      <Route component={PostListPage} path={['/@:username', '/']} exact />
-      <Route component={LoginPage} path="/login" />
-      <Route component={RegisterPage} path="/register" />
-      <Route component={WritePage} path="/write" />
-      <Route component={PostPage} path="/@:username/:postId" />
+        <Route component={PostListPage} path={['/@:username', '/']} exact />
+        <Route component={LoginPage} path="/login" />
+        <Route component={RegisterPage} path="/register" />
+        <Route component={WritePage} path="/write" />
+        <Route component={PostPage} path="/@:username/:postId" />
     </>
   );
 };

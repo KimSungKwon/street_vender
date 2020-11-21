@@ -35,7 +35,7 @@ loadUser();
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="street_vender/">
           <HelmetProvider>
             <App />
           </HelmetProvider>
