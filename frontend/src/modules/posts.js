@@ -23,6 +23,7 @@ const initialState = {
     error: null,
     lastPage: 1,
     markerOn: null,
+    adMarkerOn: null
 };
 
 const posts = handleActions(

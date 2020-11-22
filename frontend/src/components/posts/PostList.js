@@ -6,7 +6,6 @@ import Responsive from '../common/Responsive';
 import SubInfo from '../common/SubInfo';
 import Tags from '../common/Tags';
 import { Link } from 'react-router-dom';
-import LikeButtons from './LikeButtons';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 
@@ -53,8 +52,23 @@ const PostItemBlock = styled.div`
     }
 `;
 
+const ListOfLikeButtons =styled.div`
+    display: flex;  
+    height: 90px;
+    Button{
+        background-color:white;
+    }
+
+    Button p{
+        color:black;
+        margin :0;
+        text-align:center;
+        font-size : 10px;
+    }
+`;
+
 const PostItem = ({ post }) => {
-    const { publishdDate, title, user, body, tags, _id, likeButton} = post;
+    const { publishdDate, title, user, body, tags, _id, likeButton } = post;
     console.log(post);
     return (
     <PostItemBlocksWrapper>
@@ -65,13 +79,26 @@ const PostItem = ({ post }) => {
             <SubInfo username={user.username} publishdDate={new Date(publishdDate)} /> 
             <Tags tags={tags} />
             <p>{body}</p>
-            <LikeButtons likeNum={likeButton}/>
+            <ListOfLikeButtons>
+            <Button>
+                <img src={require("../../images/like.png")}></img>
+                <p>좋아요 {post && likeButton.like}</p>
+            </Button>
+            <Button>
+                <img src={require("../../images/soso.png")}></img>
+                <p>평범해요 {post && likeButton.soso}</p>
+            </Button>
+            <Button>
+                <img src={require("../../images/dislike.png")}></img>
+                <p>별로에요 {post && likeButton.dislike}</p>
+            </Button>
+        </ListOfLikeButtons>
         </PostItemBlock>
     </PostItemBlocksWrapper>    
     );
 };
 
-const PostList = ({ posts, loading, error, markerOn, showWrittenButton, user }) => {
+const PostList = ({ posts, loading, error, adMarkerOn, showWrittenButton, user }) => {
     if (error) {
         return <PostListBlock>에러 발생</PostListBlock>;
     }
@@ -79,9 +106,9 @@ const PostList = ({ posts, loading, error, markerOn, showWrittenButton, user }) 
     return (
         <PostListBlock>
             <WritePostButtonWrapper>
-                {user && user.username == 'admin' ? ((showWrittenButton && markerOn) ? (
+                {user && user.username == 'admin' ? ((showWrittenButton && adMarkerOn) ? (
                     <Button cyan to="/write">
-                        새 리뷰 작성하기
+                        가게 등록하기
                     </Button>
                 ) : (<Button gray>마커를 선택하세요</Button>)) : null
                 }

@@ -12,8 +12,8 @@ posts.use('/:id', postsCtrl.getPostById, post.routes());    // /api/posts/:id
 
 posts.delete('/:id', checkLoggedIn, postsCtrl.checkOwnPost, postsCtrl.remove);
 posts.get('/:id', postsCtrl.read);
-// posts.put('/:id', postCtrl.replace);
-posts.patch('/:id', checkLoggedIn, postsCtrl.checkOwnPost, postsCtrl.update);
+
+posts.patch('/:id', checkLoggedIn, postsCtrl.update);   // postsCtrl.checkOwnPost 제거
 
 // 라우터 내보내기
 export default posts;  
