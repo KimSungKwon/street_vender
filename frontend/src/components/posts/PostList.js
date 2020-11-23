@@ -55,11 +55,13 @@ const PostItemBlock = styled.div`
 const ListOfLikeButtons =styled.div`
     display: flex;  
     height: 90px;
-    Button{
+    div{
         background-color:white;
+        padding-right:10px;
+        padding-left:10px
     }
 
-    Button p{
+    div p{
         color:black;
         margin :0;
         text-align:center;
@@ -80,18 +82,18 @@ const PostItem = ({ post }) => {
             <Tags tags={tags} />
             <p>{body}</p>
             <ListOfLikeButtons>
-            <Button>
+            <div>
                 <img src={require("../../images/like.png")}></img>
                 <p>좋아요 {post && likeButton.like}</p>
-            </Button>
-            <Button>
+            </div>
+            <div>
                 <img src={require("../../images/soso.png")}></img>
                 <p>평범해요 {post && likeButton.soso}</p>
-            </Button>
-            <Button>
+            </div>
+            <div>
                 <img src={require("../../images/dislike.png")}></img>
                 <p>별로에요 {post && likeButton.dislike}</p>
-            </Button>
+            </div>
         </ListOfLikeButtons>
         </PostItemBlock>
     </PostItemBlocksWrapper>    
