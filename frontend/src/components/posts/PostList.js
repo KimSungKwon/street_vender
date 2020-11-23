@@ -6,8 +6,10 @@ import Responsive from '../common/Responsive';
 import SubInfo from '../common/SubInfo';
 import Tags from '../common/Tags';
 import { Link } from 'react-router-dom';
-import SearchBar from './SearchBar';
+import SearchBarContainer from '../../containers/posts/SearchBarContainer';
 import Pagination from './Pagination';
+
+import {initialState} from '../../modules/posts';
 
 const PostListBlock = styled(Responsive)`
     margin-top: 1rem;
@@ -70,37 +72,50 @@ const ListOfLikeButtons =styled.div`
 `;
 
 const PostItem = ({ post }) => {
-    const { publishdDate, title, user, body, tags, _id, likeButton } = post;
-    console.log(post);
-    return (
-    <PostItemBlocksWrapper>
-        <PostItemBlock>
-            <h2>
-                <Link to={`/@${user.username}/${_id}`}>{title}</Link>
-            </h2>
-            <SubInfo username={user.username} publishdDate={new Date(publishdDate)} /> 
-            <Tags tags={tags} />
-            <p>{body}</p>
-            <ListOfLikeButtons>
-            <div>
-                <img src={require("../../images/like.png")}></img>
-                <p>좋아요 {post && likeButton.like}</p>
-            </div>
-            <div>
-                <img src={require("../../images/soso.png")}></img>
-                <p>평범해요 {post && likeButton.soso}</p>
-            </div>
-            <div>
-                <img src={require("../../images/dislike.png")}></img>
-                <p>별로에요 {post && likeButton.dislike}</p>
-            </div>
-        </ListOfLikeButtons>
-        </PostItemBlock>
-    </PostItemBlocksWrapper>    
-    );
+const { publishdDate, title, user, body, tags, _id, likeButton } = post;
+console.log(post);
+return (
+<PostItemBlocksWrapper>
+    <PostItemBlock>
+        <h2>
+            <Link to={`/@${user.username}/${_id}`}>{title}</Link>
+        </h2>
+        <SubInfo username={user.username} publishdDate={new Date(publishdDate)} /> 
+        <Tags tags={tags} />
+        <p>{body}</p>
+        <ListOfLikeButtons>
+        <div>
+            <img src={require("../../images/like.png")}></img>
+            <p>좋아요 {post && likeButton.like}</p>
+        </div>
+        <div>
+            <img src={require("../../images/soso.png")}></img>
+            <p>평범해요 {post && likeButton.soso}</p>
+        </div>
+        <div>
+            <img src={require("../../images/dislike.png")}></img>
+            <p>별로에요 {post && likeButton.dislike}</p>
+        </div>
+    </ListOfLikeButtons>
+    </PostItemBlock>
+</PostItemBlocksWrapper>    
+);
 };
 
 const PostList = ({ posts, loading, error, adMarkerOn, showWrittenButton, user }) => {
+    const filteredPostlist = (postsList) =>{
+        postsList = postsList.filter((post) =>{
+            if(initialState.search == null){
+                return post;
+            }
+            else{
+                return (post.tags.indexOf(initialState.search) > -1);
+            }
+        })
+        return postsList.map((post) => {
+            return <PostItem post={post} key={post._id} />
+        })
+    }
     if (error) {
         return <PostListBlock>에러 발생</PostListBlock>;
     }
@@ -115,14 +130,12 @@ const PostList = ({ posts, loading, error, adMarkerOn, showWrittenButton, user }
                 ) : (<Button gray>마커를 선택하세요</Button>)) : null
                 }
             </WritePostButtonWrapper>
-            <SearchBar></SearchBar>
+            <SearchBarContainer></SearchBarContainer>
             <Pagination></Pagination>
             {/* 로딩중 아니고, 포스트배열이 존재할 때 */}
             {!loading && posts && (
                 <div>
-                    {posts.map(post => (
-                        <PostItem post={post} key={post._id} />
-                    ))}
+                    {filteredPostlist(posts)}
                 </div>
             )}
         </PostListBlock>
