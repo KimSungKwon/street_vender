@@ -21,8 +21,17 @@ const GoogleMapAPIContainer = () => {
             })
         )
     }
+    const onChangeAdMarkerOn = value => {
+        dispatch(changeField({
+            key: 'adMarkerOn',
+            value: value,
+        }))
+    }
 
-    return <GoogleMapAPI onChangeMarkerOn={onChangeMarkerOn} posts={posts} loading={loading} user={user} markerOn={markerOn} />;
+    return <GoogleMapAPI 
+        onChangeAdMarkerOn={onChangeAdMarkerOn} onChangeMarkerOn={onChangeMarkerOn} 
+        posts={posts} loading={loading} 
+        user={user} markerOn={markerOn} />;
 };
 
 export default GoogleMapAPIContainer;

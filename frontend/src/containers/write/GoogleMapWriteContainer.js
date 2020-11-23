@@ -5,9 +5,10 @@ import { changeField, initialize } from '../../modules/write';
 
 const GoogleMapWriteContainer = () => {
     const dispatch = useDispatch();
-    const { marker, title, markerOn, user } = useSelector(({ write, posts, user }) => ({   // title값과 body값을 리덕스 스토어에서 불러옴
+    const { markerOn, title, adMarkerOn, user } = useSelector(({ write, posts, user }) => ({   // title값과 body값을 리덕스 스토어에서 불러옴
         marker: write.marker,
         title: write.title,
+        adMarkerOn: posts.adMarkerOn,
         markerOn: posts.markerOn,
         user: user.user,
     }));
@@ -22,7 +23,7 @@ const GoogleMapWriteContainer = () => {
         };
     }, [dispatch]);
     
-    return <GoogleMapWrite onChangeField={onChangeField} marker={marker} title={title} markerOn={markerOn} user={user} />;
+    return <GoogleMapWrite onChangeField={onChangeField} title={title} markerOn={markerOn} adMarkerOn={adMarkerOn} />;
 };
 
 export default GoogleMapWriteContainer;
