@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const GoogleMapRead = ({ post }) => {
@@ -21,6 +21,10 @@ const GoogleMapRead = ({ post }) => {
                 zoom={17}
                 center={defaultCenter}            
             >
+            {post && <Marker 
+                key={post.marker.name} 
+                position={post.marker.position} 
+            />}
             </GoogleMap>
         </LoadScript>
     )

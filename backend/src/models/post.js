@@ -7,7 +7,14 @@ const PostSchema = new Schema({
     body: String,
     tags: [String], // 문자열로 이루어진 배열
 
-    marker: { name: String, position: { lat: Number, lng: Number }},
+    marker: { 
+        name: String, 
+        position: { 
+            lat: Number, 
+            lng: Number 
+        }
+    },
+    
     p_id: String, 
 
     publishdDate: {

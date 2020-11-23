@@ -24,6 +24,8 @@ export const initialState = {
     lastPage: 1,
     markerOn: null,
     search: null,   // 검색창에 무엇을 썻는지를 담고있는 변수(state). 초기값을 null로 (검색창에 아무것도 입력하지않음) 해놨다.
+    adMarkerOn: null
+
 };
 
 const posts = handleActions(

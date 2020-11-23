@@ -25,7 +25,7 @@ export const writePost = createAction(WRITE_POST, ({ title, body, tags, marker }
 
 export const setOriginalPost = createAction(SET_ORIGINAL_POST, post => post);
 
-export const updatePost = createAction(UPDATE_POST, ({ id, title, body, tags, marker }) => ({ id, title, body, tags, marker }));
+export const updatePost = createAction(UPDATE_POST, ({ id, title, body, tags, marker, likeButton }) => ({ id, title, body, tags, marker, likeButton }));
 
 // 사가 생성
 const writePostSaga = createRequestSaga(WRITE_POST, postsAPI.writePost);

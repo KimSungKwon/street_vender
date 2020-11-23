@@ -5,6 +5,7 @@ import Responsive from '../common/Responsive';
 import Tags from '../common/Tags';
 import SubInfo from '../common/SubInfo';
 import { Helmet } from 'react-helmet-async';
+import LikeButtonsContainer from '../../containers/post/LikeButtonsContainer';
 
 const PostViewerBlock = styled(Responsive)`
     margin-top: 4rem;
@@ -42,7 +43,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
     return (
         <PostViewerBlock>
             <Helmet>
-                <title>{title} - REACTERS</title>
+                <title>{title} - Street Vender</title>
             </Helmet>
             <PostHead>
                 <h1>{title}</h1>
@@ -55,6 +56,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
             </PostHead>
             {actionButtons}
             <PostContent dangerouslySetInnerHTML={{ __html: body }} />
+            <LikeButtonsContainer />
         </PostViewerBlock>
     );
 };

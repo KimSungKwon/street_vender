@@ -1,9 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-const GoogleMapWrite = ({ onChangeField, marker, title, user, markerOn }) => {
-    const [markers, setMarkers] = useState([]);
-
+const GoogleMapWrite = ({ onChangeField, title, adMarkerOn, markerOn }) => {
     const mapStyles = {        
         height: "75vh",
         width: "75%"
@@ -19,7 +17,24 @@ const GoogleMapWrite = ({ onChangeField, marker, title, user, markerOn }) => {
         }
         onChangeField({ key: 'marker', value: marker });
     }
+    const onAdLoad = () => {
+        const marker = {
+            name: title,
+            position: adMarkerOn.position,
+        }
+        onChangeField({ key: 'marker', value: marker });
+    }
 
+    const dragMarker = (e) => {
+        const newMarker = {
+            name: title,
+            position: {
+                lat: e.latLng.lat(),
+                lng: e.latLng.lng(),
+            }
+        }
+        onChangeField({ key: 'marker', value: newMarker });
+    }
 
     return (
         <LoadScript
@@ -29,12 +44,22 @@ const GoogleMapWrite = ({ onChangeField, marker, title, user, markerOn }) => {
                 zoom={17}
                 center={defaultCenter}             
             >
-
             {markerOn && 
                 <Marker 
                     key={title} 
-                    position={markerOn.position}
-                    onLoad={onLoad}  
+                    position={markerOn.marker.position}
+                    draggable={true}
+                    onLoad={onLoad}
+                    onDragEnd={dragMarker}  
+                />
+            }
+            {adMarkerOn && 
+                <Marker 
+                    key={title} 
+                    position={adMarkerOn.position}
+                    draggable={true}
+                    onLoad={onAdLoad}
+                    onDragEnd={dragMarker}  
                 />
             }
             </GoogleMap>
