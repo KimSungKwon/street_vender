@@ -3,6 +3,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import { initialState } from '../../modules/posts';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SearchBar = ({ onChangeSearch, posts }) => {    // module의 onChangeField 액션함수, posts 스테이트를 Container 에서 받아옴  
-  const onChange = (e) => {   // onChange 이벤트 핸들러  함수 
+  const onChange = (e) => {   // onChange 이벤트 핸들러  함수
       onChangeSearch(e.target.value) // search의 값을 e.target.value로 (검색창에 써진대로)
   }
   const classes = useStyles();
@@ -61,7 +62,8 @@ const SearchBar = ({ onChangeSearch, posts }) => {    // module의 onChangeField
     <Toolbar>
         <div className={classes.search}>
             <div className={classes.searchIcon}>
-                <SearchIcon />
+                <SearchIcon
+                />
             </div>
             <InputBase
                 placeholder="Search Tag…"
@@ -70,6 +72,7 @@ const SearchBar = ({ onChangeSearch, posts }) => {    // module의 onChangeField
                 input: classes.inputInput,
                 }}
                 inputProps={{ 'aria-label': 'search' }}
+                value={initialState.search}
                 onChange={onChange}     // 검색창에 작성을 하면 onChange 실행
             />
         </div>

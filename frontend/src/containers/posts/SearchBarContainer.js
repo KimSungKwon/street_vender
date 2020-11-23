@@ -4,6 +4,7 @@ import React from 'react';
 import SearchBar from '../../components/posts/SearchBar';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeField } from '../../modules/posts';      // 리덕스 스토어의 search 스테이트를 변경하기 위한 함수
+import {initialState} from '../../modules/posts';
 
 const SearchBarContainer = () => {
     
@@ -16,6 +17,10 @@ const SearchBarContainer = () => {
     }));
 
     const onChangeSearch = value => {
+        initialState.search = value;
+        if(value == ""){
+            initialState.search = null;
+        }
         dispatch(
             changeField({   // 리덕스 스토어의 search 스테이트의 값을 value 로 바꿔줌
                 key: 'search',

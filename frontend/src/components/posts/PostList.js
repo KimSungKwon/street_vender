@@ -57,9 +57,7 @@ const PostItemBlock = styled.div`
 
 const PostItem = ({ post }) => {
     const { publishdDate, title, user, body, tags, _id, } = post;
-    const test = (element) => element == initialState.search;
-    if(tags.some(test) || initialState.search == null){
-        return (
+    return (
         <PostItemBlocksWrapper>
             <PostItemBlock>
                 <h2>
@@ -68,15 +66,27 @@ const PostItem = ({ post }) => {
                 <SubInfo username={user.username} publishdDate={new Date(publishdDate)} /> 
                 <Tags tags={tags} />
                 <p>{body}</p>
-                <LikeButtons></LikeButtons>
+                    <LikeButtons></LikeButtons>
             </PostItemBlock>
         </PostItemBlocksWrapper>    
-        );
-    }
-    else return null;
+    );
 };
 
 const PostList = ({ posts, loading, error, markerOn, showWrittenButton, user }) => {
+    const filteredPostlist = (postsList) =>{
+        postsList = postsList.filter((post) =>{
+            if(initialState.search == null){
+                return post;
+            }
+            else{
+                return (post.tags.indexOf(initialState.search) > -1);
+            }
+        })
+        return postsList.map((post) => {
+            return <PostItem post={post} key={post._id} />
+        })
+    }
+
     if (error) {
         return <PostListBlock>에러 발생</PostListBlock>;
     }
@@ -96,9 +106,7 @@ const PostList = ({ posts, loading, error, markerOn, showWrittenButton, user }) 
             {/* 로딩중 아니고, 포스트배열이 존재할 때 */}
             {!loading && posts && (
                 <div>
-                    {posts.map(post => (
-                        <PostItem post={post} key={post._id} />
-                    ))}
+                    {filteredPostlist(posts)}
                 </div>
             )}
         </PostListBlock>
