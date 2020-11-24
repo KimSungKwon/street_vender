@@ -37,7 +37,7 @@ app.use(jwtMiddleware);
 app.use(router.routes()).use(router.allowedMethods());
 
 // koa-static으로 정적파일 제공하기
-const buildDirectory = path.resolve(__dirname, '../../blog-frontend/build');
+const buildDirectory = path.resolve(__dirname, '../../frontend/build');
 app.use(serve(buildDirectory));
 app.use(async ctx => {
     // Not Found이고 주소가 /api로 시작하지 않는 경우
