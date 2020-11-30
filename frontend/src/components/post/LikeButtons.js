@@ -16,18 +16,27 @@ const ListOfLikeButtons =styled.div`
         font-size : 10px;
     }
 `;
-const LikeButtons = ({ post, likeButton, updateLike, changeLike, changeSoso, changeDisLike }) => {
+const LikeButtons = ({ post, likeButton, updateLike, changeLike, changeSoso, changeDisLike, buttonClicked, changeClicked }) => {
 
     const onClickLike = ()=> {
-        changeLike();
+        if(buttonClicked == 'like' || !buttonClicked){
+            changeClicked('like');
+            changeLike(buttonClicked);
+        }
         updateLike();
     }
     const onClickSoso = ()=> {
-        changeSoso();
+        if(buttonClicked == 'soso' || !buttonClicked){
+            changeClicked('soso');
+            changeSoso(buttonClicked);
+        }
         updateLike();
     }
     const onClickDisLike = ()=> {
-        changeDisLike();
+        if(buttonClicked == 'dislike' || !buttonClicked){
+            changeClicked('dislike');
+            changeDisLike(buttonClicked);
+        }
         updateLike();
     }
 
