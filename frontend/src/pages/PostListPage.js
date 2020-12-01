@@ -10,6 +10,7 @@ const PostListPage = () => {
             <HeaderContainer />
             <GoogleMapAPIContainer />
             <PostListContainer />
+            <PaginationContainer/>
         </>
     )
 };

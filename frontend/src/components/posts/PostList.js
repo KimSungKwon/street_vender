@@ -131,7 +131,6 @@ const PostList = ({ posts, loading, error, adMarkerOn, showWrittenButton, user }
                 }
             </WritePostButtonWrapper>
             <SearchBarContainer></SearchBarContainer>
-            <Pagination></Pagination>
             {/* 로딩중 아니고, 포스트배열이 존재할 때 */}
             {!loading && posts && (
                 <div>
