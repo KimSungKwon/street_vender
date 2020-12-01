@@ -150,7 +150,10 @@ export const list = async ctx => {
         .lean()
         .exec();
       const postCount = await Post.countDocuments(query).exec();
-      ctx.set('Last-Page', Math.ceil(postCount / PostLimit));
+      if(postCount ===0)
+        ctx.set('Last-Page', 1);
+      else
+        ctx.set('Last-Page', Math.ceil(postCount / PostLimit));
       ctx.body = posts.map(post => ({
         ...post,
         body: removeHtmlAndShorten(post.body),
