@@ -70,7 +70,10 @@ const ListOfLikeButtons =styled.div`
         font-size : 10px;
     }
 `;
-
+const Scroll = styled.div`
+    height : 90vh;
+    overflow-y:scroll;
+`;
 const PostItem = ({ post }) => {
 const { publishdDate, title, user, body, tags, _id, likeButton } = post;
 console.log(post);
@@ -133,9 +136,9 @@ const PostList = ({ posts, loading, error, adMarkerOn, showWrittenButton, user }
             <SearchBarContainer></SearchBarContainer>
             {/* 로딩중 아니고, 포스트배열이 존재할 때 */}
             {!loading && posts && (
-                <div>
+                <Scroll>
                     {filteredPostlist(posts)}
-                </div>
+                </Scroll>
             )}
         </PostListBlock>
     );

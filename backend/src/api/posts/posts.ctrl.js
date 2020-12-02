@@ -3,7 +3,7 @@ import mongoose from 'mongoose';    // ObjectId 검증
 import Joi from '@hapi/joi';        // Request Body 검증
 // import Joi from 'joi';
 import sanitizeHtml from 'sanitize-html';   // HTML 필터링
-const PostLimit = 2;
+const PostLimit = 100;
 const { ObjectId } = mongoose.Types;
 
 const sanitizeOption = {
