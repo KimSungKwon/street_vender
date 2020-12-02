@@ -12,7 +12,7 @@ import Pagination from './Pagination';
 import {initialState} from '../../modules/posts';
 
 const PostListBlock = styled(Responsive)`
-    margin-top: 65px;
+    margin-top: 70px;
     float:right;
     width: 50%;
 `;
@@ -71,7 +71,7 @@ const ListOfLikeButtons =styled.div`
     }
 `;
 const Scroll = styled.div`
-    height : 90vh;
+    height : 100vh;
     overflow-y:scroll;
 `;
 const PostItem = ({ post }) => {
