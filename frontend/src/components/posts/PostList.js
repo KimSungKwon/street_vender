@@ -12,7 +12,7 @@ import Pagination from './Pagination';
 import {initialState} from '../../modules/posts';
 
 const PostListBlock = styled(Responsive)`
-    margin-top: 1rem;
+    margin-top: 65px;
     float:right;
     width: 50%;
 `;
