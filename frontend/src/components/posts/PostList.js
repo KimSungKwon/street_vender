@@ -19,8 +19,8 @@ const PostListBlock = styled(Responsive)`
 
 const WritePostButtonWrapper = styled.div`
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 3rem;
+    justify-content: space-between;    
+    margin-bottom: 1rem;
 `;
 
 const PostItemBlocksWrapper =styled.div`
@@ -126,6 +126,7 @@ const PostList = ({ posts, loading, error, adMarkerOn, showWrittenButton, user }
     return (
         <PostListBlock>
             <WritePostButtonWrapper>
+                <SearchBarContainer/>
                 {user && user.username == 'admin' ? ((showWrittenButton && adMarkerOn) ? (
                     <Button cyan to="/write">
                         가게 등록하기
@@ -133,7 +134,6 @@ const PostList = ({ posts, loading, error, adMarkerOn, showWrittenButton, user }
                 ) : (<Button gray>마커를 선택하세요</Button>)) : null
                 }
             </WritePostButtonWrapper>
-            <SearchBarContainer></SearchBarContainer>
             {/* 로딩중 아니고, 포스트배열이 존재할 때 */}
             {!loading && posts && (
                 <Scroll>
