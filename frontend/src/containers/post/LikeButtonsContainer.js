@@ -4,6 +4,7 @@ import LikeButtons from '../../components/post/LikeButtons';
 import { updatePost } from '../../modules/write';
 
 const LikeButtonsContainer = () => {
+    const { user } = useSelector( ({ user }) => ({ user: user.user }) );
     const dispatch = useDispatch();
     const { post, likeButton, _id } = useSelector(({ post }) => ({   // title값과 body값을 리덕스 스토어에서 불러옴
         post: post.post,
@@ -26,7 +27,7 @@ const LikeButtonsContainer = () => {
         return;
     };
     
-    return <LikeButtons post={post} likeButton={likeButton} updateLike={updateLike} changeLike={changeLike} changeSoso={changeSoso} changeDisLike={changeDisLike} />;
+    return <LikeButtons post={post} likeButton={likeButton} updateLike={updateLike} changeLike={changeLike} changeSoso={changeSoso} changeDisLike={changeDisLike} user={user}/>;
 };
 
 export default LikeButtonsContainer;

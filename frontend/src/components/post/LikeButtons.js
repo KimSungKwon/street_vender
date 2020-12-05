@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../common/Button';
+import { Link } from 'react-router-dom';
+import {CheckLoginButton} from '../common/Button';
 
 const ListOfLikeButtons =styled.div`
     display: flex;  
@@ -16,7 +18,7 @@ const ListOfLikeButtons =styled.div`
         font-size : 10px;
     }
 `;
-const LikeButtons = ({ post, likeButton, updateLike, changeLike, changeSoso, changeDisLike }) => {
+const LikeButtons = ({ post, likeButton, updateLike, changeLike, changeSoso, changeDisLike, user }) => {
 
     const onClickLike = ()=> {
         changeLike();
@@ -31,7 +33,8 @@ const LikeButtons = ({ post, likeButton, updateLike, changeLike, changeSoso, cha
         updateLike();
     }
 
-    return (
+    return user ?
+    (
         <ListOfLikeButtons>
             <Button onClick={onClickLike}>
                 <img src={require("../../images/like.png")}></img>
@@ -45,6 +48,28 @@ const LikeButtons = ({ post, likeButton, updateLike, changeLike, changeSoso, cha
                 <img src={require("../../images/dislike.png")}></img>
                 <p>별로에요 {post && likeButton.dislike}</p>
             </Button>
+        </ListOfLikeButtons>
+    ) :
+    (
+        <ListOfLikeButtons>
+            <CheckLoginButton to="/login">
+                <Button onClick={onClickLike}>
+                    <img src={require("../../images/like.png")}></img>
+                    <p>좋아요 {post && likeButton.like}</p>
+                </Button>
+            </CheckLoginButton>
+            <CheckLoginButton to="/login">
+                <Button onClick={onClickSoso}>
+                    <img src={require("../../images/soso.png")}></img>
+                    <p>평범해요 {post && likeButton.soso}</p>
+                </Button>
+            </CheckLoginButton>
+            <CheckLoginButton to="/login">
+                <Button onClick={onClickDisLike}>
+                    <img src={require("../../images/dislike.png")}></img>
+                    <p>별로에요 {post && likeButton.dislike}</p>
+                </Button>
+            </CheckLoginButton>
         </ListOfLikeButtons>
     );
 }
