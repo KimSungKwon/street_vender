@@ -8,25 +8,20 @@ const GoogleMapRead = ({ post }) => {
         height: "75vh",
         width: "100%"
     };
-    const defaultCenter = {
-        lat: 37.496281, lng: 126.957390
-    };
-
-    // const { marker } = post; 
 
     return (
         <LoadScript
             googleMapsApiKey='AIzaSyCh2Dfsi0RTtFrKPTdMgTLWKgkT-MRRexg'>
-            <GoogleMap
+            {post && <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={17}
-                center={defaultCenter}            
+                center={post.marker.position}            
             >
             {post && <Marker 
                 key={post.marker.name} 
                 position={post.marker.position} 
             />}
-            </GoogleMap>
+            </GoogleMap>}
         </LoadScript>
     )
 }
