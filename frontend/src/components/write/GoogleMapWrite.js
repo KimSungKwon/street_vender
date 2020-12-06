@@ -42,7 +42,7 @@ const GoogleMapWrite = ({ onChangeField, title, adMarkerOn, markerOn }) => {
             <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={17}
-                center={defaultCenter}             
+                center={adMarkerOn.position}             
             >
             {markerOn && 
                 <Marker 
