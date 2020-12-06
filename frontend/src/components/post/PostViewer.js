@@ -6,6 +6,7 @@ import Tags from '../common/Tags';
 import SubInfo from '../common/SubInfo';
 import { Helmet } from 'react-helmet-async';
 import LikeButtonsContainer from '../../containers/post/LikeButtonsContainer';
+import GoogleMapReadContainer from '../../containers/post/GoogleMapReadContainer';
 
 const PostViewerBlock = styled(Responsive)`
     margin-top: 4rem;
@@ -57,6 +58,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
             {actionButtons}
             <PostContent dangerouslySetInnerHTML={{ __html: body }} />
             <LikeButtonsContainer />
+            <GoogleMapReadContainer />
         </PostViewerBlock>
     );
 };
