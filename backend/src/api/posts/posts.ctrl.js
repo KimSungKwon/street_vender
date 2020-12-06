@@ -3,7 +3,7 @@ import mongoose from 'mongoose';    // ObjectId 검증
 import Joi from '@hapi/joi';        // Request Body 검증
 // import Joi from 'joi';
 import sanitizeHtml from 'sanitize-html';   // HTML 필터링
-
+/*const PostLimit = 100;*/
 const { ObjectId } = mongoose.Types;
 
 const sanitizeOption = {
@@ -145,12 +145,15 @@ export const list = async ctx => {
     try {
       const posts = await Post.find(query)
         .sort({ _id: -1 })
-        .limit(10)
-        .skip((page - 1) * 10)
+        /*.limit(PostLimit)
+        .skip((page - 1) * PostLimit)*/
         .lean()
         .exec();
       const postCount = await Post.countDocuments(query).exec();
-      ctx.set('Last-Page', Math.ceil(postCount / 10));
+      /*if(postCount ===0)*/
+        ctx.set('Last-Page', 1);
+/*    else
+        ctx.set('Last-Page', Math.ceil(postCount / PostLimit));*/
       ctx.body = posts.map(post => ({
         ...post,
         body: removeHtmlAndShorten(post.body),

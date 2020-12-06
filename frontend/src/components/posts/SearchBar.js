@@ -1,5 +1,4 @@
 import React from 'react';
-import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
@@ -59,11 +58,10 @@ const SearchBar = ({ onChangeSearch, posts }) => {    // module의 onChangeField
   }
   const classes = useStyles();
   return (
-    <Toolbar>
+
         <div className={classes.search}>
             <div className={classes.searchIcon}>
-                <SearchIcon
-                />
+                <SearchIcon/>
             </div>
             <InputBase
                 placeholder="Search Tag…"
@@ -76,7 +74,6 @@ const SearchBar = ({ onChangeSearch, posts }) => {    // module의 onChangeField
                 onChange={onChange}     // 검색창에 작성을 하면 onChange 실행
             />
         </div>
-    </Toolbar>
   );
 };
 
