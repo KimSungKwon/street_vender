@@ -11,6 +11,7 @@ const GoogleMapAPI = ({ onChangeAdMarkerOn, onChangeMarkerOn, posts, loading, us
         height: "100vh",
         width: "50%",
         float: "left",
+        margin:"65px 0px 0px 0px"
        //display: "flex"
      };
     const defaultCenter = {

@@ -58,6 +58,14 @@ const StyledLink = styled(Link)`
     ${buttonStyle}
 `;
 
+const StyledCheckLoginButton = styled(Link)`
+    ${styled.button}
+`;
+
+export const CheckLoginButton = props =>{
+    return ( <StyledCheckLoginButton {...props} cyan={props.cyan ? 1 : 0} gray={props.gray ? 1 : 0} /> );
+}
+
 const Button = props => { // Button에 to 라는 props가 있는가? 
     return props.to ? ( <StyledLink {...props} cyan={props.cyan ? 1 : 0} /> ) 
     : (<StyledButton gray={props.gray ? 1 : 0} {...props} /> );
