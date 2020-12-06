@@ -12,15 +12,15 @@ import Pagination from './Pagination';
 import {initialState} from '../../modules/posts';
 
 const PostListBlock = styled(Responsive)`
-    margin-top: 1rem;
+    margin-top: 70px;
     float:right;
     width: 50%;
 `;
 
 const WritePostButtonWrapper = styled.div`
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 3rem;
+    justify-content: space-between;    
+    margin-bottom: 1rem;
 `;
 
 const PostItemBlocksWrapper =styled.div`
@@ -70,7 +70,10 @@ const ListOfLikeButtons =styled.div`
         font-size : 10px;
     }
 `;
-
+const Scroll = styled.div`
+    height : 100vh;
+    overflow-y:scroll;
+`;
 const PostItem = ({ post }) => {
 const { publishdDate, title, user, body, tags, _id, likeButton } = post;
 console.log(post);
@@ -123,6 +126,7 @@ const PostList = ({ posts, loading, error, adMarkerOn, showWrittenButton, user }
     return (
         <PostListBlock>
             <WritePostButtonWrapper>
+                <SearchBarContainer/>
                 {user && user.username == 'admin' ? ((showWrittenButton && adMarkerOn) ? (
                     <Button cyan to="/write">
                         가게 등록하기
@@ -130,13 +134,11 @@ const PostList = ({ posts, loading, error, adMarkerOn, showWrittenButton, user }
                 ) : (<Button gray>마커를 선택하세요</Button>)) : null
                 }
             </WritePostButtonWrapper>
-            <SearchBarContainer></SearchBarContainer>
-            <Pagination></Pagination>
             {/* 로딩중 아니고, 포스트배열이 존재할 때 */}
             {!loading && posts && (
-                <div>
+                <Scroll>
                     {filteredPostlist(posts)}
-                </div>
+                </Scroll>
             )}
         </PostListBlock>
     );
