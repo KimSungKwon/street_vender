@@ -16,16 +16,16 @@ const GoogleMapRead = ({ post }) => {
     return (
         <LoadScript
             googleMapsApiKey='AIzaSyCh2Dfsi0RTtFrKPTdMgTLWKgkT-MRRexg'>
-            <GoogleMap
+            {post && <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={17}
-                center={defaultCenter}            
+                center={post.marker.position}            
             >
             {post && <Marker 
                 key={post.marker.name} 
                 position={post.marker.position} 
             />}
-            </GoogleMap>
+            </GoogleMap>}
         </LoadScript>
     )
 }
