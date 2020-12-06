@@ -25,6 +25,7 @@ export function* postSaga() {
 const initialState = {
     post: null,
     error: null,
+    buttonClicked: false,
 };
 
 const post = handleActions(
