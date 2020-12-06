@@ -6,7 +6,10 @@ const GoogleMapAPI = ({ onChangeAdMarkerOn, onChangeMarkerOn, posts, loading, us
     const [markers, setMarkers] = useState();
     const [selected, setSelected] = useState(null);
     const [adselected, setAdselected] = useState(null);
-
+    const [center, setCenter] = useState({
+        lat: 37.496281, 
+        lng: 126.957390,
+    });
     const mapStyles = {        
         height: "100vh",
         width: "50%",
@@ -14,9 +17,6 @@ const GoogleMapAPI = ({ onChangeAdMarkerOn, onChangeMarkerOn, posts, loading, us
         margin:"65px 0px 0px 0px"
        //display: "flex"
      };
-    const defaultCenter = {
-        lat: 37.496281, lng: 126.957390
-    };
 
     // 구글맵 : 마우스 클릭 이벤트
     const addMarker = (e) => {
@@ -28,6 +28,7 @@ const GoogleMapAPI = ({ onChangeAdMarkerOn, onChangeMarkerOn, posts, loading, us
             }
         }
         setMarkers(marker);
+        setCenter(marker.position);
     }
 
     const dragMarker = (e) => {
@@ -49,7 +50,7 @@ const GoogleMapAPI = ({ onChangeAdMarkerOn, onChangeMarkerOn, posts, loading, us
             <GoogleMap
                 mapContainerStyle={mapStyles}
                 zoom={17}
-                center={defaultCenter}
+                center={center}
                 onClick={addMarker}             
             >
             {/* 어드민 로그인하면 지도에 클릭으로 마커 생성 가능 */}
