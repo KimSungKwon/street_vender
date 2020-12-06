@@ -3,9 +3,10 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const GoogleMapRead = ({ post }) => {
 
-    const mapStyles = {        
+    const mapStyles = {
+        margin:"50",
         height: "75vh",
-        width: "75%"
+        width: "100%"
     };
     const defaultCenter = {
         lat: 37.496281, lng: 126.957390
