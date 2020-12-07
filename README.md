@@ -81,8 +81,8 @@ admin 전용 페이지. 제목, 내용, 위치정보, 태그를 작성하여 노
 ### 메인페이지 (로그인 전)
 
 
+![image-20201207131338198](https://user-images.githubusercontent.com/39907207/101317243-717f7280-38a1-11eb-9377-69895add4cc5.png)
 
-<img src="C:\Users\syhon\AppData\Roaming\Typora\typora-user-images\image-20201207131338198.png" alt="image-20201207131338198" style="zoom: 33%;" />
 
 - 앱을 실행하면 처음으로 보이는 페이지이다.  관리자가 사전에 등록해놓은 몇 개의 노점의 정보가 보이며 왼쪽에는 노점 위치 정보가 구글맵 위에 핀으로 꽂혀있다.
 
