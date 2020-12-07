@@ -94,27 +94,28 @@ admin 전용 페이지. 제목, 내용, 위치정보, 태그를 작성하여 노
 
     
 
-    <img src="C:\Users\syhon\AppData\Roaming\Typora\typora-user-images\image-20201207132049773.png" alt="image-20201207132049773" style="zoom:33%;" />
+![image-20201207132049773](https://user-images.githubusercontent.com/39907207/101317273-8bb95080-38a1-11eb-9223-9604cc563a89.png)
 
-  <img src="C:\Users\syhon\AppData\Roaming\Typora\typora-user-images\image-20201207132639590.png" alt="image-20201207132639590" style="zoom:33%;" />
+![image-20201207132639590](https://user-images.githubusercontent.com/39907207/101317277-8d831400-38a1-11eb-992b-661758293436.png)
+
 
   ​											회원 가입은 아이디와 비밀번호, 그리고 비밀번호 확인으로 이루어진다. 
 
   ### 메인 페이지 (로그인 후 화면)
 
-  <img src="C:\Users\syhon\AppData\Roaming\Typora\typora-user-images\image-20201207133008104.png" alt="image-20201207133008104" style="zoom:33%;" />
+![image-20201207133008104](https://user-images.githubusercontent.com/39907207/101317341-aa1f4c00-38a1-11eb-8f09-0e5053dd9c1b.png)
 
   ​				입력한 비밀번호가 일치한다면 '회원가입' 버튼을 누름과 동시에 로그인 된 메인페이지 화면으로 전환된다.
 
   
 
-  <img src="C:\Users\syhon\AppData\Roaming\Typora\typora-user-images\image-20201207132049773.png" alt="image-20201207132049773" style="zoom:33%;" />
+![image-20201207132049773](https://user-images.githubusercontent.com/39907207/101317273-8bb95080-38a1-11eb-9223-9604cc563a89.png)
 
   회원 가입 완료 후 앱의 페이지를 닫고 다시 앱에 접속하려면, 로그인을 거쳐야 한다. 메인 페이지의 우측 상단에 있는 '로그인' 버튼을 누르면 위와 같은 페이지로 전환된다. 노점에 대한 후기를 남기기 위해서는 반드시 회원가입과 로그인 과정이 필요하다.
 
   ### 메인페이지 ( 마커클릭 )
 
-  <img src="C:\Users\syhon\AppData\Roaming\Typora\typora-user-images\image-20201207133610037.png" alt="image-20201207133610037" style="zoom:33%;" />
+![image-20201207133610037](https://user-images.githubusercontent.com/39907207/101317367-b905fe80-38a1-11eb-8033-1a886d7a5732.png)
 
   찾고 싶은 노점의 핀을 클릭하면 해당 노점이 선택되었다는 팝업 메시지가 뜬다. 아래에 있는 '이동' 버튼을 눌러 선택한 노점에 대한 리뷰 페이지로의 전환이 가능하다.
 
@@ -122,13 +123,13 @@ admin 전용 페이지. 제목, 내용, 위치정보, 태그를 작성하여 노
 
   
 
-  ![image-20201207135639694](C:\Users\syhon\AppData\Roaming\Typora\typora-user-images\image-20201207135639694.png)
+![image-20201207135639694](https://user-images.githubusercontent.com/39907207/101317369-ba372b80-38a1-11eb-8a91-aae9891c664f.png)
 
 선택한 노점의 상세 리뷰를 보여주는 페이지이다.  리뷰를 남기는 것은 정보의 정확성과 사용자들의 오정보 제보를 방지하기 위해 관리자만이 노점의 정보를 업데이트 할 수 있는 방식으로 운영된다. 오픈시간, 메뉴 등의 정보를 볼 수 있으며, 노점의 전반적인 평가를 좋아요/별로예요/싫어요 의 개수로 남길 수 있게 하였다. 사용자는 세 개의 평가항목 중 단 한 개의 평가만을 선택하여 남길 수 있으며,  마구 버튼을 눌러 개수가 남용되는 것을 방지하기 위해 사용자 당 숫자가 1씩만 올라가게 하였다. 
 
 ### 키워드 검색 페이지	
 
-<img src="C:\Users\syhon\AppData\Roaming\Typora\typora-user-images\image-20201207142851940.png" alt="image-20201207142851940" style="zoom:33%;" />
+![image-20201207142851940](https://user-images.githubusercontent.com/39907207/101317439-ddfa7180-38a1-11eb-8c0e-fa03187bdb3c.png)
 
 사용자가 원하는 키워드를 검색하여 태그되어있는 노점의 리스트들이 보이게 한다. 위의 예시는 '스무디'를 검색하여 스무디가 태깅되어있는 노점 리스트들을 출력하도록 하였다.  좌측 상단 헤더의 street vendor 로고를 눌러 메인 페이지로 돌아올 수 있다.
 
