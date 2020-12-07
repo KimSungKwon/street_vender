@@ -143,7 +143,7 @@ Develop :
 
 React Google Maps API Style Guide, (powered by react-styleguidist)
 
-“[https://react-google-maps-api-docs.netlify.app/](file://https:/react-google-maps-api-docs.netlify.app/)” 
+https://react-google-maps-api-docs.netlify.app/
 
 Material ui : https://material-ui.com/
 
